@@ -41,7 +41,7 @@ def main():
     parser.add_argument('--replace', action='store_true')
     args = parser.parse_args()
     try:
-        target, backup = install(Path(__file__).resolve().parents[1]/'skills/saved-to-practice', args.skills_dir/'saved-to-practice',args.replace)
+        target, backup = install(Path(__file__).resolve().parents[1]/'skills/xhs-favorites-distiller', args.skills_dir/'xhs-favorites-distiller',args.replace)
     except (ValueError,OSError) as error:
         parser.exit(2,f'error: {error}\n')
     print(f'Installed: {target}')

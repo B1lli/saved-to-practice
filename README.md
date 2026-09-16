@@ -1,4 +1,4 @@
-# 收藏变行动 · Saved to Practice
+# 小红书收藏蒸馏 · XHS Favorites Distiller
 
 把收藏中的方法变成下次做事时用得上的技能。
 
@@ -14,7 +14,7 @@
 
 验证结果和限制见 [消融结果](evals/RESULTS.md)、[独立运行审核](docs/runtime-review.md) 和 [评测说明](docs/evaluation.md)。本地工具测试和编排决策测试不证明“用户只点收藏后，真实工作自动改善”。
 
-采集回退的安装、登录和读取方法见 [Playwright 指南](skills/saved-to-practice/references/playwright.md)。附带通用页面采集脚本；列表分页和图片完整性仍需 Agent 检查，不是免登录的站点爬虫。
+采集回退的安装、登录和读取方法见 [Playwright 指南](skills/xhs-favorites-distiller/references/playwright.md)。附带通用页面采集脚本；列表分页和图片完整性仍需 Agent 检查，不是免登录的站点爬虫。
 
 ## 本机实跑
 
@@ -30,7 +30,7 @@ cd saved-to-practice
 python3 scripts/install.py
 ```
 
-默认安装到 `$CODEX_HOME/skills/saved-to-practice`，未设置时用 `~/.codex/skills/saved-to-practice`。其他宿主可指定其支持的目录，例如：
+默认安装到 `$CODEX_HOME/skills/xhs-favorites-distiller`，未设置时用 `~/.codex/skills/xhs-favorites-distiller`。其他宿主可指定其支持的目录，例如：
 
 ```sh
 python3 scripts/install.py --skills-dir ~/.claude/skills
@@ -38,7 +38,7 @@ python3 scripts/install.py --skills-dir ~/.claude/skills
 
 已有版本默认不覆盖；`--replace` 会备份旧版本后替换。启动新会话确认技能可见，再说：
 
-> 用 saved-to-practice 把我收藏里的有效方法接入日常工作，先检查来源和我的实际痛点。
+> 用 xhs-favorites-distiller 把我收藏里的有效方法接入日常工作，先检查来源和我的实际痛点。
 
 普通工作由后续验收的专项技能承担，不需要每次点名入口。安装本项目不会自动开日程，也不会自动读取微信。
 
@@ -47,19 +47,21 @@ python3 scripts/install.py --skills-dir ~/.claude/skills
 把获准的原文整理成 [示例格式](examples/notes.json)：每条包含 `source`、稳定 `id`、`title`、`url`、`content`、布尔 `complete`。示例文本为本项目原创合成数据。
 
 ```sh
-python3 skills/saved-to-practice/scripts/inbox.py --data-dir .local/demo ingest examples/notes.json
-python3 skills/saved-to-practice/scripts/inbox.py --data-dir .local/demo pending
+python3 skills/xhs-favorites-distiller/scripts/inbox.py --data-dir .local/demo ingest examples/notes.json
+python3 skills/xhs-favorites-distiller/scripts/inbox.py --data-dir .local/demo pending
 ```
 
 Agent 读待评原文，结合用户的真实任务和失败证据判断。用当前 `revision` 记录判断：
 
 ```sh
-python3 skills/saved-to-practice/scripts/inbox.py --data-dir .local/demo assess reading-export example-01 --revision 1 --decision needs-evidence --reason '尚无真实失败产物，先保留方法候选'
+python3 skills/xhs-favorites-distiller/scripts/inbox.py --data-dir .local/demo assess reading-export example-01 --revision 1 --decision needs-evidence --reason '尚无真实失败产物，先保留方法候选'
 ```
 
 `skip`、`candidate`、`needs-evidence` 是 Agent 的当前判断记录；**工具不会把 candidate 自动安装或认定有效**。完全相同的重复导入不重复待评；标题、链接、正文或完整性标记变化会再次待评。`pending` 只读，不会提前消费条目。新失败证据出现时，Agent 可重新评估已存条目（按稳定 ID 查询，见技能工具说明）。
 
 本地数据默认在 `~/.local/share/saved-to-practice`；可用 `--data-dir` 或 `SAVED_TO_PRACTICE_DATA` 改位置。与代码仓库分离保存个人原文、用户画像、来源授权和评测私料。
+
+升级自旧版 `saved-to-practice` 时，将旧技能目录移到技能发现目录之外作为备份，再安装新版，避免两个入口同时被发现。私人数据目录与环境变量沿用旧名，已有收藏、判断和登录状态可继续使用。GitHub 仓库地址保持不变。
 
 ## 日程与停止
 

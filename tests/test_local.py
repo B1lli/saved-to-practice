@@ -9,7 +9,7 @@ import unittest
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
-INBOX = ROOT/'skills/saved-to-practice/scripts/inbox.py'
+INBOX = ROOT/'skills/xhs-favorites-distiller/scripts/inbox.py'
 
 
 def load(name, path):
@@ -81,8 +81,8 @@ class LocalWorkflow(unittest.TestCase):
         self.assertEqual(json.loads(result.stdout),[])
 
     def test_install_replacement_preserves_backup_outside_discovery(self):
-        source=ROOT/'skills/saved-to-practice'
-        target=self.root/'skills/saved-to-practice'
+        source=ROOT/'skills/xhs-favorites-distiller'
+        target=self.root/'skills/xhs-favorites-distiller'
         with patch.dict(os.environ,{'SAVED_TO_PRACTICE_DATA':str(self.root/'state')}):
             installer.install(source,target)
             self.assertTrue((target/'scripts/inbox.py').is_file())

@@ -6,7 +6,7 @@ import tempfile
 import threading
 import unittest
 
-SCRIPT = Path(__file__).resolve().parents[1]/'skills/saved-to-practice/scripts/browser.py'
+SCRIPT = Path(__file__).resolve().parents[1]/'skills/xhs-favorites-distiller/scripts/browser.py'
 spec = importlib.util.spec_from_file_location('capture_browser', SCRIPT)
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)

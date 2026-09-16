@@ -52,7 +52,7 @@ Existing prompt, schema, fixture and run-configuration text must match exactly b
 For the final package smoke check (one full-arm call, separate from the frozen ablation):
 
 ```sh
-python3 evals/run.py --skill-root skills/saved-to-practice --arms full --repeats 1 --output-dir evals/.private-eval/final-smoke
+python3 evals/run.py --skill-root skills/xhs-favorites-distiller --arms full --repeats 1 --output-dir evals/.private-eval/final-smoke
 ```
 
 Every explicit output directory receives exact prompts, schema, preregistered fixture expectations, run configuration, decisions and summary before/through execution. CLI raw events are kept in its ignored `.private-raw/` directory. The original published runs retain their raw events under the ignored `evals/.private-eval/` directory. Pure self-tests write no files and do not call Codex.

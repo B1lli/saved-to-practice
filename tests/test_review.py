@@ -44,7 +44,7 @@ class IndependentRuntimeReview(unittest.TestCase):
 
     def test_failed_install_restores_previous_discoverable_version(self):
         with tempfile.TemporaryDirectory() as tmp:
-            root=Path(tmp); target=root/'skills/saved-to-practice'
+            root=Path(tmp); target=root/'skills/xhs-favorites-distiller'
             target.mkdir(parents=True); (target/'SKILL.md').write_text('previous skill')
             real_move=installer.shutil.move
             def fail_new_install(src,dst,*args,**kwargs):
@@ -53,7 +53,7 @@ class IndependentRuntimeReview(unittest.TestCase):
                 return real_move(src,dst,*args,**kwargs)
             with patch.dict(os.environ,{'SAVED_TO_PRACTICE_DATA':str(root/'data')}), patch.object(installer.shutil,'move',side_effect=fail_new_install):
                 with self.assertRaisesRegex(OSError,'failed installation'):
-                    installer.install(ROOT/'skills/saved-to-practice',target,replace=True)
+                    installer.install(ROOT/'skills/xhs-favorites-distiller',target,replace=True)
             self.assertEqual((target/'SKILL.md').read_text(),'previous skill')
             self.assertEqual(list((root/'data/backups').iterdir()),[])
 
