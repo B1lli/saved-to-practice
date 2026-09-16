@@ -21,8 +21,8 @@
 需要 Python 3.10+；本地工具无第三方依赖。
 
 ```sh
-git clone https://github.com/B1lli/saved-to-practice.git
-cd saved-to-practice
+git clone https://github.com/B1lli/xhs-favorites-distiller.git
+cd xhs-favorites-distiller
 python3 scripts/install.py
 ```
 
@@ -59,7 +59,7 @@ python3 skills/xhs-favorites-distiller/scripts/inbox.py --data-dir .local/demo a
 
 本地数据默认在 `~/.local/share/saved-to-practice`；可用 `--data-dir` 或 `SAVED_TO_PRACTICE_DATA` 改位置。与代码仓库分离保存个人原文、用户画像、来源授权和评测私料。
 
-升级自旧版 `saved-to-practice` 时，将旧技能目录移到技能发现目录之外作为备份，再安装新版，避免两个入口同时被发现。私人数据目录与环境变量沿用旧名，已有收藏、判断和登录状态可继续使用。GitHub 仓库地址保持不变。
+升级自旧版 `saved-to-practice` 时，将旧技能目录移到技能发现目录之外作为备份，再安装新版，避免两个入口同时被发现。私人数据目录与环境变量沿用旧名，已有收藏、判断和登录状态可继续使用。
 
 ## 日程与停止
 
