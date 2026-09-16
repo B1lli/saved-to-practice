@@ -57,7 +57,7 @@ def main():
     try:
         output = capture(args.url, args.data_dir, login=args.login, headed=args.headed, wait_for=args.wait_for)
     except ImportError:
-        parser.exit(2, 'Playwright is missing. Follow references/playwright.md to install the optional runtime.\n')
+        parser.exit(2, 'Configured Playwright runtime is unavailable.\n')
     except Exception as error:
         # Do not echo exceptions containing signed navigation URLs to shared logs.
         parser.exit(2, f'Browser capture failed ({type(error).__name__}). Check browser installation, login, URL and selector; no inbox progress advanced.\n')

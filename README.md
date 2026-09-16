@@ -14,11 +14,7 @@
 
 验证结果和限制见 [消融结果](evals/RESULTS.md)、[独立运行审核](docs/runtime-review.md) 和 [评测说明](docs/evaluation.md)。本地工具测试和编排决策测试不证明“用户只点收藏后，真实工作自动改善”。
 
-采集回退的安装、登录和读取方法见 [Playwright 指南](skills/xhs-favorites-distiller/references/playwright.md)。附带通用页面采集脚本；列表分页和图片完整性仍需 Agent 检查，不是免登录的站点爬虫。
-
-## 本机实跑
-
-已在登录小红书的本机完成一次真实收藏 → 评估 → 保存 → 去重：打开 2 篇笔记，2/2 判断读回成功；重复导入 0 新增、2 不变。完整阅读与部分阅读分别记录，没有将未验证的方法激活。见[实跑范围与限制](docs/local-run.md)。
+采集回退的登录和读取方法见 [Playwright 指南](skills/xhs-favorites-distiller/references/playwright.md)。附带通用页面采集脚本；列表分页和图片完整性仍需 Agent 检查，不是免登录的站点爬虫。
 
 ## 安装
 
@@ -35,6 +31,8 @@ python3 scripts/install.py
 ```sh
 python3 scripts/install.py --skills-dir ~/.claude/skills
 ```
+
+首次安装后，安装者按[首次配置](docs/first-install.md)完成来源、可选 Playwright 环境和日程授权。该文档不安装到技能目录，也不进入后续运行上下文。
 
 已有版本默认不覆盖；`--replace` 会备份旧版本后替换。启动新会话确认技能可见，再说：
 

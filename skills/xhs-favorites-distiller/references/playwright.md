@@ -2,21 +2,9 @@
 
 宿主没有可用的内置浏览器工具时使用。先发现当前实际工具；不能仅因产品叫 Codex/Claude 就认定有浏览器，也不要求 ego lite、Edge 或 Chrome。
 
-## 一次安装
-
-复用可用的 Playwright 工具/运行环境；缺少时在私人数据目录建虚拟环境，安装官方 Playwright 和它管理的 Chromium。macOS/Linux 示例：
-
-```sh
-python3 -m venv ~/.local/share/saved-to-practice/playwright-venv
-~/.local/share/saved-to-practice/playwright-venv/bin/python -m pip install playwright
-~/.local/share/saved-to-practice/playwright-venv/bin/python -m playwright install chromium
-```
-
-Windows 可用 `python -m venv <数据目录>/playwright-venv`，解释器为 `<数据目录>/playwright-venv/Scripts/python.exe`。Linux 若缺系统库，按 Playwright 官方安装说明补充系统依赖；不能将启动失败记为空收藏。
-
 ## 登录与读取
 
-用上面的虚拟环境解释器运行本技能的 `scripts/browser.py`：
+使用已配置的 Python/Playwright 解释器运行本技能的 `scripts/browser.py`：
 
 ```sh
 <python> <skill-dir>/scripts/browser.py '<用户的收藏页URL>' --login
@@ -33,4 +21,4 @@ Agent 检查截图与正文：确认账号、收藏标签、登录/验证码/错
 
 登录失效或平台限制时通知用户必要动作，停止该来源；不绕过验证码，不自动修改收藏。Playwright 提供网页访问能力，不代表存在微信收藏网页入口。
 
-官方参考：[安装](https://playwright.dev/python/docs/intro)、[专用持久化上下文](https://playwright.dev/python/docs/api/class-browsertype#browser-type-launch-persistent-context)。
+官方参考：[专用持久化上下文](https://playwright.dev/python/docs/api/class-browsertype#browser-type-launch-persistent-context)。

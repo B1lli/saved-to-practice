@@ -1,3 +1,22 @@
+# 首次安装配置
+
+仅首次安装时由安装者读取。本文件不随 skill 安装，不写入日程提示词、用户画像、记忆或后续任务上下文。后续仅保存运行需要的配置值。
+
+先在私人数据目录建立 profile.json，记录用户确认的目标、痛点证据、来源及范围；未知项保持未知。选择可用的宿主浏览器，缺少时准备以下 Playwright 环境。首次建立日程前再按下方流程获取授权。
+
+## 一次安装
+
+复用可用的 Playwright 工具/运行环境；缺少时在私人数据目录建虚拟环境，安装官方 Playwright 和它管理的 Chromium。macOS/Linux 示例：
+
+```sh
+python3 -m venv ~/.local/share/saved-to-practice/playwright-venv
+~/.local/share/saved-to-practice/playwright-venv/bin/python -m pip install playwright
+~/.local/share/saved-to-practice/playwright-venv/bin/python -m playwright install chromium
+```
+
+Windows 可用 `python -m venv <数据目录>/playwright-venv`，解释器为 `<数据目录>/playwright-venv/Scripts/python.exe`。Linux 若缺系统库，按 Playwright 官方安装说明补充系统依赖；不能将启动失败记为空收藏。
+
+
 # 一次启动，后续少打扰
 
 先填具体方案再询问会影响运行的缺项：

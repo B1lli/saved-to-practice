@@ -46,7 +46,8 @@ def main():
         parser.exit(2,f'error: {error}\n')
     print(f'Installed: {target}')
     if backup: print(f'Backup: {backup}')
-    print('Start a fresh agent session to check skill discovery. This does not create a scheduled task.')
+    if backup is None:
+        print('First installation: complete '+str(Path(__file__).resolve().parents[1]/'docs/first-install.md'))
 
 
 if __name__ == '__main__':
