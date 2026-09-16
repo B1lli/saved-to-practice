@@ -19,7 +19,7 @@ description: 把小红书、微信或阅读收藏中的方法转成贴合用户�
 
 ### 1. 读取新候选
 
-按 [sources.md](references/sources.md) 获取已授权内容，先比较本地历史决策避免重复阅读。图文读关键图片；视频需要可核实内容。只有标题/封面/摘要则记 `UNPROVEN(原文不完整)`，不生成技能。
+网页优先用宿主内置浏览器，没有则用 Playwright；按 [sources.md](references/sources.md) 获取已授权内容，先比较本地历史决策避免重复阅读。图文读关键图片；视频需要可核实内容。只有标题/封面/摘要则记 `UNPROVEN(原文不完整)`，不生成技能。
 
 导出文件或已读原文需要可靠去重时，按 [local-tools.md](references/local-tools.md) 使用随包的 `scripts/inbox.py` 导入、查看和记录判断。它不抓取平台、不自动激活，也不替 Agent 做价值判断。
 
