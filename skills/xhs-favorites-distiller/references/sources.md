@@ -2,9 +2,9 @@
 
 网页采集优先使用当前宿主实际提供的内置浏览器工具（Codex、Claude 等）；没有可用工具时，按 [playwright.md](playwright.md) 使用 Playwright 回退。不得把 ego lite、Edge 或其他本机浏览器设为安装前提。已有适用连接器/CLI 可复用，但它们不是浏览器回退的前置条件。不预设抓取接口、签名或选择器。
 
-宿主工具是具体接口，不是品牌推断。Codex 提供 `cua_repl` 时先选中内置浏览器并阅读返回的接口文档，例如 `const browser = await cua.getBrowser({id: "iab"})`。使用文档支持的 `browser.tabs.list()` 找已有来源标签，再用 `browser.tabs.get(id)` 和 `tab.playwright.domSnapshot()` 读取；已有登录页/收藏页就复用，不重复开页或刷新。没有匹配页时才用文档支持的 `browser.tabs.new()` 并导航到配置 URL（未知时从小红书首页进入本人收藏）。
+宿主工具是具体接口，不是品牌推断。Codex 提供 `cua_repl` 时先选中内置浏览器并阅读返回的接口文档，例如 `const browser = await cua.getBrowser({id: "iab"})`。接口名称以当前工具返回文档为准：若提供 `browser.tabs.list()`，用它找已有来源标签，再用 `browser.tabs.get(id)` 和 `tab.playwright.domSnapshot()` 读取；若提供 `cua.listTabs / cua.getTab / getAXState`，使用这组接口完成相同步骤，不混用两套 API。已有登录页/收藏页就复用，不重复开页或刷新。没有匹配页时才用文档支持的 `browser.tabs.new()` 并导航到配置 URL（未知时从小红书首页进入本人收藏）。
 
-页面内容较多或本机较慢时，将单次 `cua_repl` 调用的 `timeout_ms` 设为 60000，分开选择浏览器、列标签和读取页面。一次 30 秒超时不证明浏览器不可用；恢复后先查已存在的标签，避免超时重试不断新建标签。不要用全部外部浏览器的枚举结果代替内置浏览器连接状态。Claude 等环境使用实际提供的内置接口。内置入口不存在或合理重试后仍无法读取才回退 Playwright。其他通用浏览器 skill 推荐外部浏览器时，本工作流仍采用上述顺序，不因为本机有 ego lite 就跳过内置浏览器。
+页面内容较多或本机较慢时，将单次 `cua_repl` 调用的 `timeout_ms` 设为 60000，分开选择浏览器、列标签和读取页面。一次 30 秒超时不证明浏览器不可用；恢复后先查已存在的标签，避免超时重试不断新建标签。不要用全部外部浏览器的枚举结果代替内置浏览器连接状态。Claude 等环境使用实际提供的内置接口。内置入口不存在或合理重试后仍无法读取才回退 Playwright。子代理未获得内置浏览器时，应把采集交回有该接口的宿主主任务；子代理中的 unavailable 不代表用户宿主没有内置浏览器。其他通用浏览器 skill 推荐外部浏览器时，本工作流仍采用上述顺序，不因为本机有 ego lite 就跳过内置浏览器。
 
 ## 小红书
 
