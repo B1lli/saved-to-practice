@@ -16,4 +16,17 @@ Make the default first-install responsibility explicit: install, create and read
 
 Acceptance requires actual installation evidence, a real scheduler record and saved ID, a bounded source attempt, and no unnecessary permission question. A login/platform block may be reported honestly; it is not counted as successful content collection. Real collection and learned-method effectiveness remain separate claims.
 
-Retest pending.
+## Retest — FAIL for complete autonomous setup
+
+Repository revision: `42d53bf`. The skill entry was removed before a fresh projectless desktop task received the same installation request. Private profile and browser state were retained. Installation succeeded (including recovery from a downloader certificate failure using the supported Git transport), the local suite passed 12 checks with one optional skip, and the task read a real three-image note. It did not create a daily task and selected an external browser rather than demonstrating the requested in-app-first route.
+
+After the acceptance turn ended, a separate read-only diagnostic checked the tool registry: 266 tools were exposed, with no `automation_update` or automation/heartbeat/scheduler-named tool. The diagnostic is not part of the acceptance run. This is evidence of a missing tool in that task, not evidence that the whole desktop app lacks scheduling.
+
+The parent also attempted the documented `cua.createBrowserTab("iab", ..., {visible: true})` entry directly; the control call timed out even while the UI showed an in-app tab. An open UI tab is not proof of a working control connection.
+
+## Follow-up repair
+
+The source guide now specifies a direct in-app-browser attempt before Playwright, and rejects treating global browser inventory failure as proof that the in-app browser is unavailable. First-install guidance explicitly checks actual tool discovery before declaring scheduling unavailable. No setup instructions were added to recurring runtime context.
+
+Validation: 12 local checks passed; the optional real-browser check is skipped without its runtime. The skill validator and diff checks passed. Full autonomous setup remains blocked by host browser-control and task tool exposure; no successful scheduler creation or passing third independent run is claimed. Raw account data and task logs remain private.
+

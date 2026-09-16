@@ -2,6 +2,8 @@
 
 网页采集优先使用当前宿主实际提供的内置浏览器工具（Codex、Claude 等）；没有可用工具时，按 [playwright.md](playwright.md) 使用 Playwright 回退。不得把 ego lite、Edge 或其他本机浏览器设为安装前提。已有适用连接器/CLI 可复用，但它们不是浏览器回退的前置条件。不预设抓取接口、签名或选择器。
 
+宿主工具是具体接口，不是品牌推断：Codex 提供 `cua_repl` 时，按其工具说明直接用 `cua.createBrowserTab("iab", 用户来源URL或"https://www.xiaohongshu.com/explore", {visible: true})` 打开内置浏览器。不要先枚举全部外部浏览器；`getState()` 失败不证明 `iab` 不可用。Claude 等环境使用实际提供的内置浏览器接口。只有该入口不存在或直接调用失败才回退 Playwright。其他通用浏览器 skill 推荐外部浏览器时，本工作流仍采用上述顺序，不因为本机有 ego lite 就跳过内置浏览器。
+
 ## 小红书
 
 从用户配置中的 URL 打开，确认登录账号与收藏标签选中，避免把发布页当收藏页。公开页面不能读私有收藏时不假称已读。
