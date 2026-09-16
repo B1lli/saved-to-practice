@@ -29,4 +29,3 @@ The parent also attempted the documented `cua.createBrowserTab("iab", ..., {visi
 The source guide now specifies a direct in-app-browser attempt before Playwright, and rejects treating global browser inventory failure as proof that the in-app browser is unavailable. First-install guidance explicitly checks actual tool discovery before declaring scheduling unavailable. No setup instructions were added to recurring runtime context.
 
 Validation: 12 local checks passed; the optional real-browser check is skipped without its runtime. The skill validator and diff checks passed. Full autonomous setup remains blocked by host browser-control and task tool exposure; no successful scheduler creation or passing third independent run is claimed. Raw account data and task logs remain private.
-
